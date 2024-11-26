@@ -1,0 +1,56 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+app-sidenav {
+  width: 220px;
+  overflow: auto;
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 20px;
+  overflow: auto;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+app-sidenav {
+  width: 250px;
+  transition: all 0.3s ease;
+}
+
+.main-content {
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.main-content.full-width {
+  margin-left: 0;
+}
+
+.content-wrapper.sidebar-hidden app-sidenav {
+  margin-left: -250px;
+}
+
+.main-content {
+  padding: 20px;
+  background-color: #ffffff;
+}

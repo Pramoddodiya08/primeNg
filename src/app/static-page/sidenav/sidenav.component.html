@@ -1,0 +1,78 @@
+<!-- sidebar.component.html -->
+<nav class="d-flex flex-column p-3 h-100">
+  <div class="nav-link">
+    <a
+      routerLink="/home"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="d-flex align-items-center"
+    >
+      <i class="bi bi-house-door"></i>
+      Home
+    </a>
+  </div>
+  <div class="nav-link">
+    <a
+      routerLink="/about"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="d-flex align-items-center"
+    >
+      <i class="bi bi-file-person"></i>
+      About
+    </a>
+  </div>
+  <div class="nav-link">
+    <a
+      routerLink="/contact"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="d-flex align-items-center"
+    >
+      <i class="bi bi-person-lines-fill"></i>
+      Contact
+    </a>
+  </div>
+
+  <!-- Learn Section -->
+  <div class="nav-link">
+    <div
+      (click)="toggleLearn()"
+      class="d-flex align-items-center cursor-pointer"
+    >
+      <i class="bi bi-book"></i>
+      Learn
+      <i
+        class="bi"
+        [ngClass]="isLearnOpen ? 'bi-chevron-down' : 'bi-chevron-right'"
+        style="margin-left: auto"
+      ></i>
+    </div>
+
+    <!-- Nested Links -->
+    <div *ngIf="isLearnOpen" class="ms-4 mt-2">
+      <div class="nav-link">
+        <a
+          routerLink="/forms"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="d-flex align-items-center"
+        >
+          <i class="bi bi-file-text"></i>
+          Forms
+        </a>
+      </div>
+      <div class="nav-link">
+        <a
+          routerLink="/pipe"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="d-flex align-items-center"
+        >
+          <i class="bi bi-gear"></i>
+          Pipes
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

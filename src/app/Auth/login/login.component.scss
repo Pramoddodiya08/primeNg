@@ -1,0 +1,147 @@
+.container-fluid {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+.card {
+  background-color: var(--light-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 500px;
+}
+
+h3 {
+  text-align: center;
+  color: var(--bg-color);
+  font-weight: 500;
+  font-family: NotoSans;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 6px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid var(--bg-color);
+  border-radius: 4px;
+  transition: border-color 0.3s ease-in-out;
+  outline: none;
+  color: #282c37;
+}
+
+input:focus {
+  border-color: var(--bg-color);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--highlight-color);
+  font-weight: 500;
+}
+
+$yellow: #fbba23;
+$blue: #65bb5c;
+$pink: #2a2f6a;
+$orange: #f23b14;
+
+$duration: 700;
+
+@function randomNum($min, $max) {
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+  @return $randomNum;
+}
+.confetti {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 6px;
+  height: 10px;
+  background: $yellow;
+  top: -10px;
+  opacity: 0;
+
+  @for $i from 1 through 13 {
+    &:nth-child(#{$i}) {
+      left: $i * 7%;
+      transform: rotate(#{randomNum(-180, 180)}deg);
+      animation: makeItRain $duration * 1ms infinite ease-out;
+      animation-delay: #{randomNum(0, $duration * 0.5)}ms;
+      animation-duration: #{randomNum($duration * 0.5, $duration * 1)}ms;
+    }
+  }
+
+  &:nth-child(odd) {
+    background: $blue;
+  }
+
+  &:nth-child(even) {
+    z-index: 1;
+  }
+
+  &:nth-child(4n) {
+    width: 5px;
+    height: 13px;
+    animation-duration: $duration * 2ms;
+    background: $orange;
+  }
+
+  &:nth-child(3n) {
+    width: 5px;
+    height: 13px;
+    animation-duration: $duration * 2.5ms;
+    animation-delay: $duration * 1ms;
+  }
+
+  &:nth-child(4n-7) {
+    background: $pink;
+  }
+}
+
+@keyframes makeItRain {
+  from {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(96px);
+  }
+}

@@ -1,0 +1,76 @@
+<div class="pipe-section">
+  <h1 class="title">Angular Pipes Demo</h1>
+
+  <div class="mb-4 text-black rounded-lg p-3 bg-[#FBF6E2]">
+    <p>Here there are original data :</p>
+    <br />
+
+    <p>
+      import from : DatePipe, UpperCasePipe, LowerCasePipe, CurrencyPipe,
+      DecimalPipe, PercentPipe, JsonPipe
+    </p>
+    <p>
+      currentDate: Date = new Date(); <br />
+      sampleText: string = 'Learning Angular Pipes!'; <br />
+      price: number = 12345.6789;<br />
+      percentage: number = 0.85;<br />
+      jsonObject = name: 'Angular', version: 16, standalone: true;
+    </p>
+  </div>
+  <div class="pipe-example">
+    <strong>Date Pipe:</strong>
+    <p><em>Transforms a Date object into a readable string format.</em></p>
+    <p>Full Date: {{ currentDate | date : "fullDate" }}</p>
+    <p><em>Example output: "Thursday, November 14, 2024"</em></p>
+
+    <p>Short Time: {{ currentDate | date : "shortTime" }}</p>
+    <p><em>Example output: "3:45 PM"</em></p>
+  </div>
+
+  <div class="pipe-example">
+    <strong>UpperCase Pipe:</strong>
+    <p><em>Transforms all characters of the text to uppercase.</em></p>
+    <p>{{ sampleText | uppercase }}</p>
+    <p><em>Example output: "LEARNING ANGULAR PIPES!"</em></p>
+  </div>
+
+  <div class="pipe-example">
+    <strong>LowerCase Pipe:</strong>
+    <p><em>Transforms all characters of the text to lowercase.</em></p>
+    <p>{{ sampleText | lowercase }}</p>
+    <p><em>Example output: "learning angular pipes!"</em></p>
+  </div>
+
+  <div class="pipe-example">
+    <strong>Currency Pipe:</strong>
+    <p><em>Transforms a number to a currency format based on locale.</em></p>
+    <p>USD: {{ price | currency : "USD" }}</p>
+    <p><em>Example output: "$12,345.68"</em></p>
+
+    <p>INR: {{ price | currency : "INR" : "symbol-narrow" }}</p>
+    <p><em>Example output: "₹12,345.68"</em></p>
+  </div>
+
+  <div class="pipe-example">
+    <strong>Decimal Pipe:</strong>
+    <p><em>Formats a number according to a given decimal pattern.</em></p>
+    <p>{{ price | number : "1.2-2" }}</p>
+    <p><em>Example output: "12,345.68"</em></p>
+  </div>
+
+  <div class="pipe-example">
+    <strong>Percent Pipe:</strong>
+    <p><em>Transforms a decimal number into a percentage format.</em></p>
+    <p>{{ percentage | percent }}</p>
+    <p><em>Example output: "85%"</em></p>
+  </div>
+
+  <div class="pipe-example">
+    <strong>JSON Pipe:</strong>
+    <p><em>Transforms a JavaScript object into a JSON string.</em></p>
+    <pre>{{ jsonObject | json }}</pre>
+    <p>
+      <em>Example output: "name":"Angular","version":16,"standalone":true</em>
+    </p>
+  </div>
+</div>

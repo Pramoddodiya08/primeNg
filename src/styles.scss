@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "NotoSans";
+  src: url("assets/fonts/NotoSans-Va.ttf");
+}
+body {
+  font-family: NotoSans;
+}
+:root {
+  --bg-color: #131842;
+  --primary-color: #e68369;
+  --light-color: #ecceae;
+  --highlight-color: #fbf6e2;
+  --white-color: white;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

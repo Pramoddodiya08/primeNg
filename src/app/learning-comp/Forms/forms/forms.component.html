@@ -1,0 +1,197 @@
+<div class="flex justify-start border-b mb-4">
+  <button
+    (click)="activeTab = 'template'"
+    [ngStyle]="{
+      'border-color': activeTab === 'template' ? 'var(--bg-color)' : ''
+    }"
+    class="px-4 py-2 border-b-2 transition-colors"
+    style="border-color: var(--border-color)"
+  >
+    Template Form
+  </button>
+  <button
+    (click)="activeTab = 'reactive'"
+    [ngStyle]="{
+      'border-color': activeTab === 'reactive' ? 'var(--bg-color)' : ''
+    }"
+    class="px-4 py-2 border-b-2 transition-colors"
+    style="border-color: var(--border-color)"
+  >
+    Reactive Form
+  </button>
+</div>
+
+<ng-container *ngIf="activeTab === 'template'">
+  <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
+      <h2 class="text-2xl font-semibold mb-6 text-center">
+        Template Form Example
+      </h2>
+      <form #form="ngForm">
+        <div class="mb-4">
+          <label for="username" class="block text-gray-700 font-medium mb-2"
+            >Username:</label
+          >
+          <input
+            type="text"
+            id="username"
+            name="username"
+            minlength="2"
+            #username="ngModel"
+            [(ngModel)]="templateFormObj.username"
+            placeholder="Enter your username"
+            class="border border-gray-300 p-2 w-full rounded"
+            required
+          />
+
+          <div class="text-red-500 text-sm mt-1">
+            @if(username.touched && username.errors?.['required']){
+            <span style="color: red">Username Required</span>
+            }@else if(username.errors?.['minlength']){
+            <span style="color: red">minLength 2</span>
+            }
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700 font-medium mb-2"
+            >Email:</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="templateFormObj.email"
+            placeholder="Enter your email"
+            class="border border-gray-300 p-2 w-full rounded"
+            required
+            email
+            #emailInput="ngModel"
+          />
+
+          <div class="text-red-500 text-sm mt-1">
+            @if(emailInput.touched && emailInput.errors?.['required']){
+            <span style="color: red">Email is required.</span>
+            }@else if(emailInput.touched && emailInput.errors?.['email']) {
+            <span style="color: red">
+              Please enter a valid email address.
+            </span>
+            }
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="phone" class="block text-gray-700 font-medium mb-2"
+            >Phone:</label
+          >
+          <input
+            type="number"
+            id="phone"
+            name="phone"
+            [(ngModel)]="templateFormObj.phone"
+            placeholder="Enter your phone number"
+            class="border border-gray-300 p-2 w-full rounded"
+            pattern="^[0-9]{10}$"
+            required
+            #phoneInput="ngModel"
+          />
+          <div class="text-red-500 text-sm mt-1">
+            @if(phoneInput.touched && phoneInput.errors?.['required']){
+            <span style="color: red">Phone number is required.</span>
+            }@else if(phoneInput.touched && phoneInput.errors?.['pattern']) {
+            <span style="color: red"> Please enter a valid Phone number. </span>
+            }
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="state" class="block text-gray-700 font-medium mb-2"
+            >State:</label
+          >
+          <select
+            id="state"
+            name="state"
+            [(ngModel)]="templateFormObj.state"
+            class="border border-gray-300 p-2 w-full rounded"
+            required
+            #state="ngModel"
+          >
+            <option value="">Select your state</option>
+            <option value="gujarat">Gujarat</option>
+            <option value="maharashtra">Maharashtra</option>
+            <option value="rajasthan">Rajasthan</option>
+            <option value="punjab">Punjab</option>
+          </select>
+
+          <div class="text-red-500 text-sm mt-1">
+            @if(state.touched && state.errors?.['required']){
+            <span style="color: red">Please select state.</span>
+            }
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <span class="block text-gray-700 font-medium mb-2">Gender:</span>
+          <label class="inline-flex items-center mr-4">
+            <input
+              type="radio"
+              name="gender"
+              [(ngModel)]="templateFormObj.gender"
+              value="male"
+              class="mr-2"
+              required
+            />
+            Male
+          </label>
+          <label class="inline-flex items-center">
+            <input
+              type="radio"
+              name="gender"
+              [(ngModel)]="templateFormObj.gender"
+              value="female"
+              class="mr-2"
+              required
+            />
+            Female
+          </label>
+        </div>
+
+        <div class="mb-6">
+          <label class="inline-flex items-center">
+            <input
+              type="checkbox"
+              id="terms"
+              name="terms"
+              [(ngModel)]="templateFormObj.terms"
+              class="mr-2"
+              required
+              #terms="ngModel"
+            />
+            <span class="text-gray-700"
+              >I agree to the terms and conditions</span
+            >
+          </label>
+          <div class="text-red-500 text-sm mt-1">
+            @if(terms.touched && terms.errors?.['required']){
+            <span style="color: red">Please check terms.</span>
+            }
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full text-white py-2 rounded bg-blue-500 transition-colors hover:opacity-80 disabled:bg-gray-400 disabled:cursor-not-allowed"
+          (click)="submitForm(form)"
+        >
+          <!-- [style.backgroundColor]="form.invalid ? 'gray' : 'var(--bg-color)'"
+            [disabled]="form.invalid" -->
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="activeTab === 'reactive'">
+  <h1>Reactive Work</h1>
+</ng-container>

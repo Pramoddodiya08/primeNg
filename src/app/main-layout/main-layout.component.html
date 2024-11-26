@@ -1,0 +1,15 @@
+<div class="app-container">
+  <app-header (toggleSidebar)="toggleSidebar()"></app-header>
+  <div
+    class="content-wrapper"
+    [ngClass]="{ 'sidebar-hidden': !(isSidebarVisible$ | async) }"
+  >
+    <app-sidenav></app-sidenav>
+    <div
+      class="main-content"
+      [ngClass]="{ 'full-width': !(isSidebarVisible$ | async) }"
+    >
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
