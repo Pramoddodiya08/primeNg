@@ -1,0 +1,25 @@
+<button
+  type="{{ type }}"
+  [disabled]="disabled || loading"
+  [ngClass]="colour"
+  [style.background]="background"
+  [style.color]="color"
+  [ngStyle]="{ 'border-width': '2px', 'border-style': 'solid' }"
+  [style.borderColor]="border"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="15"
+    height="15"
+    viewBox="0 0 15 15"
+    *ngIf="colour === 'close' && withIcon"
+  >
+    <path
+      fill="#fff"
+      d="M11.25 10.2l-1.05 1.05-2.7-2.7-2.7 2.7-1.05-1.05 2.7-2.7-2.7-2.7L4.8 3.75l2.7 2.7 2.7-2.7 1.05 1.05-2.7 2.7zM7.5 0C3.375 0 0 3.375 0 7.5S3.375 15 7.5 15 15 11.625 15 7.5 11.625 0 7.5 0z"
+    />
+  </svg>
+  <ng-content *ngIf="!loading"></ng-content>
+  {{ loading ? "" : text }}
+  <i *ngIf="loading" class="fas fa-circle-notch fa-spin load-icon"></i>
+</button>

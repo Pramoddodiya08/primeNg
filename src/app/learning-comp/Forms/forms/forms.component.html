@@ -178,15 +178,14 @@
           </div>
         </div>
 
-        <button
-          type="submit"
-          class="w-full text-white py-2 rounded bg-blue-500 transition-colors hover:opacity-80 disabled:bg-gray-400 disabled:cursor-not-allowed"
-          (click)="submitForm(form)"
+        <app-custom-button
+          customClass="primary test"
+          width="50%"
+          height="50%"
+          (clicked)="submitForm($event)"
         >
-          <!-- [style.backgroundColor]="form.invalid ? 'gray' : 'var(--bg-color)'"
-            [disabled]="form.invalid" -->
           Submit
-        </button>
+        </app-custom-button>
       </form>
     </div>
   </div>

@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
+import { ButtonModule } from "primeng/button";
 
 @Component({
-  selector: 'app-about',
+  selector: "app-about",
   standalone: true,
-  imports: [],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+  imports: [ButtonModule],
+  templateUrl: "./about.component.html",
+  styleUrl: "./about.component.scss",
 })
-export class AboutComponent {
-
-}
+export class AboutComponent {}
